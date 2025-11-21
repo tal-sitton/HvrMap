@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Hvr map"/>
+    <title>מפת עסקים של חבר</title>
+    <meta property="og:title" content="מפת עסקים של חבר"/>
+    <meta property="og:description" content="מפת עסקים שמקבלים חבר"/>
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/6963/6963703.png"/>
+
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="expires" content="mon, 06 jan 1990 00:00:01 gmt">
+
+    <link href="/pics/mcc.ico" rel="icon" type="image/ico" />
+	<link href="/pics/mcc.ico" rel="shortcut icon" />
+	<link href="/hvr_icon.png" rel="apple-touch-icon" />
+	<link href="" rel="apple-touch-startup-image" />
+	<link rel="apple-touch-icon" href="/touch-icon.png" />
+	<link rel="apple-touch-icon" sizes="57x57" href="/touch-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/touch-icon-114x114.png" />
+
+  <title>מפת בתי עסק חבר</title>
+
+  <!-- Bootstrap CSS -->
+	<link href="./maps_hvr_files/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/owl.carousel.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/owl.theme.default.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/datatables.min.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/responsive.bootstrap4.min.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/datepicker3.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/nk-ekko-lightbox.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/select2.min.css" type="text/css" rel="stylesheet">
+    <link href="./maps_hvr_files/hvr_site04.css" type="text/css" rel="stylesheet">
+    
+    <script>
+        var org_id = "2";
+    </script>
+    
+    <script src="./maps_hvr_files/jquery.min.js"></script>
+    <script defer src="./maps_hvr_files/popper.min.js"></script>
+    <script defer src="./maps_hvr_files/bootstrap.min.js"></script>
+    <script defer src="./maps_hvr_files/util.js"></script>
+    
+    <script defer src="./maps_hvr_files/jquery.cookie.min.js"></script>
+    <script defer src="./maps_hvr_files/json2.js"></script>
+    <script defer src="./maps_hvr_files/feed07_0.min.js"></script>
+    <script defer src="./maps_hvr_files/jquery.jcrumb02.js"></script>
+    <script defer src="./maps_hvr_files/jquery.timers-1.2.js"></script>
+    <script defer src="./maps_hvr_files/bootstrap-datepicker.js"></script>
+    <script defer src="./maps_hvr_files/bootstrap-datepicker.he.js"></script>
+    <script defer src="./maps_hvr_files/bootstrap-notify.min.js"></script>
+    <script defer src="./maps_hvr_files/bs-breakpoints.min.js"></script>
+    <script defer src="./maps_hvr_files/datatables.min.js"></script>
+    <script defer src="./maps_hvr_files/responsive.bootstrap4.min.js"></script>
+    <script defer src="./maps_hvr_files/all.min.js"></script>
+    <script defer src="./maps_hvr_files/owl.carousel.221.js?v=1"></script>
+    <script defer src="./maps_hvr_files/bootstrap-autocomplete.min.js"></script>
+    <script defer src="./maps_hvr_files/nk-ekko-lightbox.js"></script>
+    <script defer src="./maps_hvr_files/select2.min.js"></script>
+    <script defer src="./maps_hvr_files/protobuf.min.js"></script>
+    
+</head>
+
+<body>
+
+
+    <!-- top section-->
+    
+    <style>
+    .btn-hvr-map {
+        padding: 3px 9px;
+        background: #58b947;
+        border-radius: 100%;
+        color:#fff;
+    }
+    .btn-hvr-map:hover {
+        background: #56af2e;
+        color:#fff;
+    }
+    
+</style>
+
+<div id="tov-top-nav" class="header-bg xl">
+    <div class="container p-0">
+        <div class="row m-0 p-0 pt-4">
+            <div class="col-3">
+                <!--LOGO-->
+                <a href="/site/pg/hvr_home" aria-label="דף הבית"><img class="w-100 img-fluid" src="/pics/site_home/hvr_logo.png" alt="" style="max-width:140px;"></a>
+            </div>
+            <div class="col-6 align-self-center">
+                <!--SEARCH BAR-->
+                <form id="search-bar-lg" class="col-12 font-size-20 order-3 order-xl-1 px-0 py-3 pr-xl-4">
+                    <div class="input-group dir-ltr">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-hvr" type="button" onclick="javascript:submitSearch();" aria-label="חפש">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <input id="searchWord" name="searchWord" type="text" class="form-control form-conrol-sm mr-1 text-right input-search basicAutoComplete" data-noresults-text="לא נמצא" data-url="/acmplt.aspx" autocomplete="off" placeholder="הקלד מילות חיפוש">
+                    </div>
+                </form>
+            </div>
+            <div class="col-3 align-self-center text-left">
+                <!--USER & CART-->
+                <div class="flex-grow-0 d-flex justify-content-end text-hvr font-size-24">
+                    <div class="my-2">
+                        <a href="maps_hvr" class="btn-hvr-map ml-2" alt="חבר על המפה"><i class="fas fa-map-marker-alt"></i></a>
+                    </div>
+                    <div class="my-2">
+                        <a class="text-hvr" href="/orders/cart.aspx"><i class="fas fa-shopping-cart fa-fw" title="סל קניות"></i></a>
+                    </div>
+                    <div class="my-2">
+                        <i class="fas fa-user fa-fw" title="משתמש"></i>
+                        <span class="font-size-16" id="userfullname"></span>
+                        <a class="text-warning font-size-16" href="/site/logout">(התנתק)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end of tov-top-nav -->
+
+
+    <!-- tov-cat-nav -->
+    <style>
+    .btn-hvr-map {
+        padding: 3px 9px !important;
+        background: #58b947;
+        border-radius: 100%;
+        color:#fff  !important;
+    }
+    .btn-hvr-map:hover {
+        background: #56af2e;
+        color:#fff  !important;
+    }
+    
+</style>
+
+<div id="tov-cat-nav" class="header-bg">
+    <!-- tmpl -->
+    <nav class="navbar navbar-expand-xl navbar-light main-nav px-0 mx-2" id="mainNav">
+        <div class="container p-lg-0 tov-cat-menu-bg">
+
+            <button class="btn btn-link text-hvr btn-lg btn-bars-sm lg md sm xs pl-0 mr-md-5" type="button" data-toggle="collapse" data-target="#mainNavResponsive" aria-label="Toggle Navigation" aria-controls="mainNavResponsive" aria-expanded="false">
+                <span class="font-size-24"><i class="fas fa-bars"></i></span>
+            </button>
+
+            <div class="btn btn-link text-hvr btn-lg d-block px-0 lg md sm xs m-auto">
+                <a href="/site/pg/hvr_home" aria-label="דף הבית"><img class="w-50 img-fluid" src="/pics/site_home/hvr_logo_mobile.png" alt=""></a>
+            </div>
+            
+             <button type="button" class="btn btn-link btn-search-sm text-hvr btn-lg d-block pl-2 px-0 lg md sm xs btn-hvr-map ml-2" aria-controls="maps" onclick="javascript:handleHref('maps_hvr');">
+                <i class="fas fa-map-marker-alt"></i>
+            </button>
+
+            <button type="button" class="btn btn-link btn-search-sm text-hvr btn-lg d-block px-0 lg md sm xs pr-0 pl-2" data-toggle="collapse" data-target="#search-bar-sm" aria-expanded="false" aria-controls="search-bar" aria-label="פתח או סגור שורת חיפוש">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <div class="collapse navbar-collapse collapsible-navbar justify-content-center flex-grow-1 font-size-18 px-0  pt-2 pb-3" id="mainNavResponsive">
+                <ul class="navbar-nav flex-fill justify-content-between text-xl-center pr-0 px-3">
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h1 dropdown nav-item-hvr">
+                        <a id="navbardrop-cards" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">אשראי <br class="d-none d-xl-inline">ונטענים</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="gift_card_company">"חבר" של קבע</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="teamim_card_store">"חבר" טעמים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="credit_card_bs">כרטיס אשראי "חבר"</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h2 dropdown nav-item-hvr">
+                        <a id="navbardrop-pnai" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">בילוי <br class="d-none d-xl-inline">ופנאי</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="culture_category">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_parks_main">אתרים ואטרקציות</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_shovar_main">שוברי בילוי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_shovar_movie">שוברי סרטים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_sport">מועדוני ספורט</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_shovar_spa">שוברי ספא</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="life_events">שלבים בחיים</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h3 dropdown nav-item-hvr">
+                        <a id="navbardrop-tarbut" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">תרבות <br class="d-none d-xl-inline">ואירועים</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_events">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_shows_main">הצגות ואירועים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="theatre">תיאטראות</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="mcc_item_new,328036">מנויים לעיתונים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:mozion2023">מוזיאונים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="Gallery">גלריית תמונות מאירועים</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h4 dropdown nav-item-hvr">
+                        <a id="navbardrop-trips" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">נופשים <br class="d-none d-xl-inline">וטיולים</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_nofesh_travel">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="tourism_main">תיירות בארץ ובחו"ל</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="special_terminal">טרמינל "חבר"</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="mcc_item_new,353767">"חבר" TOUR</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="tourism_local_vacation">השכרת רכב בחו"ל</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_shovar_zimer">אירוח כפרי וצימרים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="travel_list">טיולים וימי כיף</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="theatre_shovar_new_ProdDesc,379715">טיסות לאילת</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_tours">סיורים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="show_list?p1=12128">מנויים לרשות הטבע והגנים</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h5 dropdown nav-item-hvr">
+                        <a id="navbardrop-yeda" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">לימודים <br class="d-none d-xl-inline">והעשרה</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_knowledge">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_culture_yeda">השכלה, הכשרה והעשרה</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_culture_manuy">שוברי לימודים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="gift_card_company?company_category=לימודים%20וספרים">הנחות בנטען</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="st_reshet.aspx?cmbMain=9&cmbSub=151&cmbRegion=0">הנחות באשראי</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h6 dropdown nav-item-hvr">
+                        <a id="navbardrop-tzarchanut" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">צרכנות <br class="d-none d-xl-inline">נבונה</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="retail_category">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="retail_main">מבצעי השבוע</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_nad_car">מבצעי רכב ונדל"ן</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="mishlohever">משלו"חבר"</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="retail_regular">הטבות לשגרה יומית</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_zarhanut">שוברים ודילים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="gift_card_company">בתי עסק בכרטיס הנטען</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="st_reshet.aspx">בתי עסק בכרטיס אשראי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="mcc_item_new,253581">"חבר" CashBack</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h7 dropdown nav-item-hvr">
+                        <a id="navbardrop-food" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">מזון <br class="d-none d-xl-inline">וקולינריה</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_shovar_food">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:retail_supermarket">רשתות מזון</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_maels">שוברי ארוחות</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_burgers">המבורגרים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_asiatic">אסייתי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_pizza">פיצות</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_bakery">מאפיות וגבינות</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="search:shovar_sweets">מארזים ומתוקים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="teamim_card_store?category=יקבים ומבשלות בירה">יינות ויקבים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="teamim_card_store">כרטיס "חבר" טעמים</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h8 dropdown nav-item-hvr">
+                        <a id="navbardrop-ins" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">פיננסים <br class="d-none d-xl-inline">וביטוחים</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="finances_insurance">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_fin_main">פיננסים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="ins_body">ביטוחים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="family_category">משפחה, בריאות וכלכלה</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="lifestyle">חיים בריא</a>
+                        </div>
+                    </li>
+                    <li class="nav-item d-xl-flex align-items-xl-center nav-item-h9 dropdown nav-item-hvr">
+                        <a id="navbardrop-social" class="nav-link dropdown-toggle new-ddt text-hvr pr-xl-1" href="#" data-toggle="dropdown">קהילה <br class="d-none d-xl-inline">וקהילתיות</a>
+                        <div class="dropdown-menu text-right">
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hever_social_bs">ראשי</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hvr_volunteering">התנדבות עמיתים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="mcc_item_new,298049">התנדבות עובדים</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="mcc_item_new,298051">אפשרויות לתרומה</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="hever_community">"חבר" בקהילה</a>
+                            <a class="dropdown-item nav-single nav-color-hvr" href="gift_donation">מתנה ותרומה</a>
+                        </div>
+                    </li>
+                    <li class="nav-item lg md sm xs font-size-24">
+                        <hr />
+                        <div class="my-2 mx-xl-1 text-hvr">
+                            <i class="fas fa-shopping-cart fa-fw" title="סל קניות"></i>
+                            <a class="text-hvr font-size-16" href="/orders/cart.aspx">סל קניות</a>
+                        </div>
+                        <div class="my-2 mx-xl-1 text-hvr">
+                            <i class="fas fa-mobile-alt fa-fw" title="קוד ראשוני לאפליקציה"></i>
+                            <a class="text-hvr font-size-16" href="hvr_info_online">קוד ראשוני לאפליקציה</a>
+                        </div>
+                        <div class="my-2 mx-xl-1 text-hvr">
+                            <i class="fas fa-user fa-fw" title="משתמש"></i>
+                            <span class="font-size-16 userfullname"></span>
+                            <a class="text-warning font-size-16" href="/site/logout">(התנתק)</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="d-xl-none col-11 m-auto text-center collapse" id="search-bar-sm">
+        <form  class="col-12 font-size-20 py-2">
+            <div class="input-group dir-ltr"><div class="input-group-prepend"><button class="btn btn-hvr" type="button" onclick="javascript:submitSearch();" aria-label="חפש">
+                        <i class="fa fa-search" aria-hidden="true"></i></button></div>
+                <input id="searchWord_sm" name="searchWord" type="text"
+        class="form-control form-conrol-sm mr-1 text-right input-search basicAutoComplete"
+        data-noresults-text="לא נמצא" data-url="/acmplt.aspx" autocomplete="off"
+        placeholder="הקלד מילות חיפוש"></div></form>
+    </div>
+</div> <!-- end of tov-cat-nav -->
+    
+
+
+
+<div id="tov-wrap" class="container">
+
+    <!-- main section-->
+    <div id="tov-main-section" class="container">
+      <div class="row">
+
+        <!-- side bar -->
+
+
+        <!-- tov-side-bar end -->
+
+        <!-- content section -->
+        <div class="col-12 order-1 order-lg-1">
+        <!-- box row -->
+          <div id="tov-box-row" class="row">
+            <div class="col-12 main-seperator-top">&nbsp;</div>
+        
+<script src="./maps_hvr_files/index.min.js"></script>
+
+<script>
+
+    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })({
+        key: "AIzaSyB3KMnQNSA6hkpsEWWw13HDkL2c7YYv7ZE",
+        v: "weekly", // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        language: "iw", // hebrew
+        libraries: ["places"],
+    });
+
+</script>
+
+<style>
+
+    #map-container {
+        min-height: 800px;
+    }
+
+    #loading-message {
+        display: none;
+        display: flex;
+        z-index: 10;
+    }
+
+    .checkbox-lg .form-check-input {
+        position: relative;
+        top: .4rem;
+        scale: 1.2;
+        margin-right: 42% !important;
+    }
+
+    .checkbox-lg .form-check-label {
+        padding-top: 13px;
+    }
+
+    .btn-outline-hvr {
+        color: #003a6a;
+        border-color: #003a6a;
+    }
+
+    .btn-outline-hvr:hover {
+        background-color: #e2e7eb;
+        border-color: #e2e7eb;
+    }
+
+    #btn-filter-markers, #btn-all-markers {
+        width: 115px;
+    }
+
+    #btn-current-location:hover {
+        background-color: #f4f4f4;
+    }
+
+    .btn-report {
+        background-color: #fcb53b;
+        color: #003a6a;
+    }
+
+    .btn-report:hover {
+        background-color: #f1a526;
+        color: #003a6a;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .collapse.dont-collapse-md {
+            display: flex;
+            height: auto !important;
+            visibility: visible;
+        }
+    }
+
+</style>
+
+
+<p class="col-12 h1 text-hvr mt-md-4 mb-0">"חבר" על המפה</p>
+<p class="col-12 h4 font-weight-normal mb-3">כל ההנחות במקום אחד</p>
+<p class="col-12 h5 mb-3">סרטון הדרכה - <a href="mcc_item_new,380083"><u>לצפייה >></u></a></p>
+
+<div class="col-12">
+    <div class="row mx-0">
+        <button id="map-filter-button" class="col-12 d-flex justify-content-between align-items-center d-md-none btn btn-lg btn-hvr" type="button" data-toggle="collapse" data-target="#map-filter" aria-controls="map-filter"><span class="h5 mb-1">אפשרויות סינון ומיקום</span> <i class="fas fa-angle-down map-filter-icon"></i></button>
+    </div>
+    
+    <form id="map-filter" class="collapse dont-collapse-md row bg-light rounded-lg mx-0" action="">
+
+        <div class="col-12 d-flex justify-content-between mt-3">
+            <p class="h5 ml-3">סינון בתי עסק להצגה:</p>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-3 flex-row d-flex align-items-lg-end justify-content-between pl-lg-0 mb-3 mb-lg-0">
+            <div class="form-check checkbox-lg pr-0 pl-2 pl-lg-1 mb-lg-0">
+                <input id="chk-show-food-markers" type="checkbox" class="form-check-input chk-show-markers" name="chk-show-food-markers" checked>
+                <br>
+                <label class="form-check-label bg-white border rounded-lg p-1" for="chk-show-food-markers">
+                    <img class="img-fluid" src="https://www.hvr.co.il/pics/site_home/teamimcard_img_170324.png" alt="מסעדות בכרטיס חבר טעמים">
+                </label>
+            </div>
+            <div class="form-check checkbox-lg pr-0 pl-2 pl-lg-1 mb-lg-0">
+                <input id="chk-show-gift-markers" type="checkbox" class="form-check-input chk-show-markers" name="chk-show-gift-markers" checked>
+                <br>
+                <label class="form-check-label bg-white border rounded-lg p-1" for="chk-show-gift-markers">
+                    <img class="img-fluid" src="https://www.hvr.co.il/pics/site_home/kevacard_img_170324.png" alt="רשתות בכרטיס חבר של קבע">
+                </label>
+            </div>
+            <div class="form-check checkbox-lg pr-0 pl-2 pl-lg-1 mb-lg-0">
+                <input id="chk-show-card-markers" type="checkbox" class="form-check-input chk-show-markers" name="chk-show-card-markers" checked>
+                <br>
+                <label class="form-check-label bg-white border rounded-lg p-1" for="chk-show-card-markers">
+                    <img class="img-fluid" src="https://www.hvr.co.il/pics/site_home/creditcard_img_170324.png" alt="רשתות בהסדר בכרטיס אשראי חבר">
+                </label>
+            </div>
+            <div class="form-check checkbox-lg p-0 mb-lg-0">
+                <input id="chk-show-site-markers" type="checkbox" class="form-check-input chk-show-markers" name="chk-show-site-markers" checked>
+                <br>
+                <label class="form-check-label bg-white border rounded-lg p-1" for="chk-show-site-markers">
+                    <img class="img-fluid" src="https://www.hvr.co.il/pics/site_home/tarbut_img_170324.png" alt="אתרי תרבות ופנאי">
+                </label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 d-flex align-items-md-end pl-lg-0 mb-3 mb-lg-0">
+            <select id="category" name="category" class="form-control" aria-label="קטגוריה">
+                <option value="-" selected>כל הקטגוריות</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 d-flex align-items-md-end pl-lg-0 mb-3 mb-lg-0">
+            <datalist id="title-list"></datalist>
+            <input id="title" name="title" type="text" list="" class="form-control" placeholder="חיפוש לפי שם בית עסק" aria-label="שם בית העסק">
+        </div>
+        <div class="col-12 col-lg-3 d-flex align-items-lg-end justify-content-between justify-content-md-end justify-content-lg-start mt-3 mt-lg-0 pl-4 pl-md-3">
+            <button id="btn-filter-markers" type="button" class="col-6 col-md-auto btn btn-hvr h3 text-nowrap mb-lg-0 ml-2">סינון</button>
+            <button id="btn-all-markers" type="button" class="col-6 col-md-auto btn btn-outline-hvr h3 text-nowrap mb-lg-0">ביטול סינון</button>
+        </div>
+        <div class="col-12">
+            <hr class="mt-3">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 pl-lg-0 mb-3">
+            <p class="h5 mb-3">הצגת בתי עסק סביב המיקום:</p>
+            <div class="input-group">
+                <input id="location-center" type="text" class="form-control" placeholder="חיפוש לפי כתובת" autocomplete="off" aria-label="מיקום למרכז מפה">
+                <div class="input-group-prepend">
+                    <button id="btn-current-location" class="btn btn-outline-secondary border" type="button" aria-label="מרכז למיקום נוכחי" data-toggle="tooltip" data-placement="top" title="מיקום נוכחי"><i class="fas fa-map-marker-alt text-danger"></i></button>
+                </div>
+            </div>
+            <small id="error-location-center" class="error text-danger font-weight-bold" style="display: none;">לא ניתן לאתר את המיקום שהוזן</small>
+        </div>
+    </form>
+
+    <div id="no-markers-global-msg" class="no-markers-alert alert alert-danger py-2 mt-3" style="display: none;" role="alert">
+        <p class="h5 mb-1">שימו לב</p>
+        <p class="mb-0">לא נמצאו בתי עסק המתאימים לחיפוש המבוקש</p>
+    </div>
+    <div id="no-markers-local-msg" class="no-markers-alert alert alert-danger py-2 mt-3" style="display: none;" role="alert">
+        <p class="h5 mb-1">שימו לב</p>
+        <p class="mb-0">לא נמצאו בתי עסק המתאימים לחיפוש המבוקש בתצוגת המפה הנוכחית - מומלץ להרחיב או לשנות את שטח החיפוש על גבי המפה</p>
+    </div>
+    <div id="no-location-msg" class="alert alert-warning py-2 mt-3" style="display: none;" role="alert">
+        <p class="h6 p-0 mb-0"><i class="fas fa-exclamation-triangle"></i> לא ניתן לאתר את מיקומך הנוכחי</p>
+    </div>
+</div>
+
+<div id="map-container" class="col-12 d-flex justify-content-center px-0 my-3">
+    <div id="loading-message" class="align-self-center align-items-center position-absolute mx-3">
+        <span class="h4 bg-primary text-white p-2 rounded-lg">טוען מפה...</span>
+    </div>
+    <div id="map" class="w-100 border rounded-lg mx-3"></div>
+</div>
+
+<div class="col-12 text-center mb-3">
+    <a id="btn-report" class="d-sm-inline btn btn-block btn-report font-weight-bold" href="amitim_hvr_bs?&isoffer=1" role="button">לדיווח על בית עסק לא פעיל >></a>
+</div>
+
+<div class="col-12 small mb-4">
+    <p class="mb-0">לתשומת ליבך:</p>
+    <ul>
+        <li>
+            "חבר" על המפה הינו פיצ'ר חדש הנמצא בימים אלו בהרצה ולכן ייתכנו אי דיוקים או בעיות אחרות לא צפויות.
+            <br>
+            רוצים לשתף אותנו? נשמח לשמוע מכם באמצעות פניה למוקד שירות וקשרי עמיתים בטלפון <a href="tel:036100100">03-6100100</a> או בוואטסאפ: <a href="https://api.whatsapp.com/send?phone=972543528888">054-3528888</a>
+        </li>
+        <li>המידע המופיע באתר ובדף המפות אינו מעודכן בזמן אמת והוא מתבסס, בין היתר, על מידע שנמסר מבתי העסק המשתתפים ועל נתונים שאינם בשליטת "חבר". מומלץ ליצור קשר עם בית העסק טרם הגעה אליו ולוודא את השתתפותו בהסדר.</li>
+        <li>"חבר" אינו אחראי על עדכניות המידע המופיע באתר, ובכלל זה טעויות הנוגעות לפרטי הסניפים וטעויות העלולות לנבוע ממיפוי מיקום בתי העסק והסניפים. במידה והתגלתה טעות, ניתן לדווח על כך למחלקת שירות וקשרי עמיתים של "חבר".</li>
+        <li>מבלי לגרוע מתנאי השימוש באתר, השימוש בדף המפות הוא אישי בלבד, ואין להפיץ את האמור בו בתפוצות שאינן אישיות ו/ או להעתיק את המידע בו וכיו"ב. חל איסור מוחלט על שימוש בכל תוכנה שהיא באתר, ומובהר כי שימוש שנוגד את סעיף זה עלול להביא לחסימה של המשתמש/ת מהאתר.</li>
+    </ul>
+</div>
+
+
+
+            <div class="col-12 main-seperator-top">&nbsp;</div>   
+          </div> <!-- end of box row-->
+        </div> <!-- end of content section-->  
+
+         
+      </div><!--end of main section row-->
+    </div> <!-- end of main section container -->
+    
+    
+    </div> <!-- end of tov-wrap container -->
+    
+    <!-- Footer -->
+    <footer class="bg-hvr text-light font-size-14 py-4 py-md-5 mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!--logo-->
+            <div class="col-12 col-md-4 text-center">
+                <a href="/site/pg/hvr_home" aria-label="דף הבית">
+                    <img class="d-inline d-md-none pb-4 w-25" src="/pics/site_home/hvr_logo_white.png" alt="">
+                    <img class="d-none d-md-inline w-50" src="/pics/site_home/hvr_logo_white.png" alt="">
+                </a>
+            </div>
+
+            <!--support-->
+            <div class="col-12 col-md-2 pr-md-0 pr-5">
+                <h6>שירות ותמיכה</h6>
+                <ul class="pr-0 list-unstyled">
+                    <li><a class="text-light" href="/orders/orderlist.aspx">ההזמנות שלי</a></li>
+                    <li><a class="text-light" href="hever_cards">כרטיסי "חבר"</a></li>
+                    <li><a class="text-light" href="data_support_hvr">צרו איתנו קשר</a></li>
+                    <li><a class="text-light" href="member_update">עדכון פרטים</a></li>
+                    <li><a class="text-light" href="mcc_item_new,191977">רכזת נגישות</a></li>
+                    <li><a class="text-light" href="sherut_hvr">הפניות שלכם - המענה שלנו</a></li>
+                    <li><a class="text-light" href="mcc_item_new,202015">מרכז מידע פיננסי</a></li>
+                </ul>
+            </div>
+
+            <!--about-->
+            <div class="col-12 col-md-2 pr-md-0 pr-5">
+                <h6>אודות</h6>
+                <ul class="pr-0 list-unstyled">
+                    <li><a class="text-light" href="footer_hvr_bs">אודות "חבר"</a></li>
+                    <li><a class="text-light" href="mcc_item_new,389771">הצטרפות ל"חבר"</a></li>
+                    <li><a class="text-light" href="footer_hvr_bs">מבנה ארגוני</a></li>
+                    <li><a class="text-light" href="footer_hvr_bs">תנאי השימוש באתר</a></li>
+                    <li><a class="text-light" href="footer_hvr_bs">מדיניות הפרטיות</a></li>
+                    <li><a class="text-light" href="footer_hvr_bs">מדיניות אבטחה</a></li>
+                    <li><a class="text-light" href="media_mcc_bs">"חבר" בתקשורת</a></li>
+                </ul>
+            </div>
+
+            <!--social-->
+            <div class="col-12 col-md-2 pr-md-0 pr-5">
+                <h6>אחריות תאגידית</h6>
+                <ul class="pr-0 list-unstyled">
+                    <li><a class="text-light" href="hvr_volunteering">התנדבות עמיתים</a></li>
+                    <li><a class="text-light" href="hever_social_bs">התנדבות עובדים</a></li>
+                    <li><a class="text-light" href="hever_social_bs">תרומה לקהילה</a></li>
+                </ul>
+            </div>
+
+            <!--more info-->
+            <div class="col-12 col-md-2 pr-md-0 pr-5">
+                <h6>מידע נוסף</h6>
+                <ul class="pr-0 list-unstyled">
+		            <li><a class="text-light" href="life_events">שלבים בחיים</a></li>
+                    <li><a class="text-light" href="keva_points_bs">נקודות לאנשי קבע</a></li>
+                    <li><a class="text-light" href="https://www.prat.idf.il/">אתר השכר והכספים</a></li>
+        	        <li><a class="text-light" href="mcc_item_new,136099">בתי עסק שהפסיקו את ההנחות בכ.א.</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</footer>
+    
+    <!-- ./Footer -->
+
+ 
+
+  <a id="back-to-top" href="#" class="btn btn-primary btn-lg scroll-up" role="button" title="" data-toggle="tooltip" data-placement="right" data-original-title="חזור לראש העמוד" style="display: none;" aria-label="חזור לראש העמוד">
+    <svg class="svg-inline--fa fa-chevron-up fa-w-14" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="chevron-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"></path></svg><!-- <i class="fa fa-chevron-up" aria-hidden="true"></i> -->
+  </a>
+
+  <!-- jQuery before, then Popper.js, then Bootstrap JS -->
+  <script defer src="./maps_hvr_files/hvr_site24.js?ver=1"></script>
+
+<!-- Local Page JS -->
+<script>
+    const MAP_ID = "be0910b1bf0c49bd";  // WEBSITE_MAP_ID
+const DATA_FILE_PATH = './maps_hvr_files/markers_hvr';
+const CATEGORY_FILE_PATH = './maps_hvr_files/company_categories.json';
+const DEFAULT_CENTER = { lat: 32.090141, lng: 34.860298 };
+const DEFAULT_MAP_ZOOM = 16;
+const MIN_MAP_ZOOM = 7;
+const MIN_CLUSTER_LIMIT = 500;
+const DEAFULT_CATEGORY_FILTER = "-";
+const DEAFULT_TITLE_FILTER = "";
+const DONE_TYPING_INTERVAL = 1000;  // in ms
+const LOADING_MSG_SHOW_THRESHOLD = 250;  // in ms
+const FADE_IN_SPEED = 200;   // in ms
+const LOCAL_STORAGE_DATA_KEY = "data-markers";
+const LOCAL_STORAGE_LIFE_TIME = 30 * 60 * 1000;  // 30 minutes (in ms)
+const MAP_MAX_RETRIES = 3;
+const MAP_RETRY_DELAY = 3000;   // in ms
+const BTN_WAIT_MSG = '<span class="spinner-border spinner-border-sm align-baseline" role="status" aria-hidden="true"></span><span role="status"> המתן...</span>';
+
+const markers = [];
+const markerIdns = [];
+const infoWindowTmpl =
+    '<div id="content" style="max-width: 220px;">' +
+    '<h1 id="firstHeading" class="firstHeading font-size-22 mb-0">{{ title }}</h1>' +
+    '<div id="bodyContent" class="font-size-14">' +
+    '<p class="font-size-18">{{ category }}</p>' +
+    '<p>סוג הטבה: {{ hesder }}</p>' +
+    '<p class="mb-1">{{ city }}, {{ address }}</p>' +
+    '<p>{{ website }}</p>' +
+    '<p class="font-size-18">' +
+    '<a class="btn btn-sm btn-hvr ml-2" href="https://www.google.com/maps/dir/?api=1&hl=iw&origin={{ origLat }},{{ origLng }}&destination={{ destLat }},{{ destLng }})" target="_blank"><span>הוראות הגעה</span></a>' +
+    '<a class="btn btn-sm btn-hvr d-lg-none" href="https://waze.com/ul?ll={{ destLat }},{{ destLng }}&navigate=yes" target="_blank"><span>ניווט ב-waze</span></a>' +
+    '</p>' +
+    '</div>' +
+    '</div>';
+
+let data = [];
+let categories = [];
+let map, latLng, visibleBounds, newBounds, currentPosition, currentLocationMarker, markerCluster, typingTimer, lsData, btnFilterMarkersHtml, btnAllMarkersHtml;
+let firstMapLoad = true;
+let titleSearched = false;
+let showCurrLocationMarker = true;
+let openedInfoWindow = false;
+let filterChanged = false;
+let windowResized = false;
+let mapTilesLoaded = false;
+let mapRetryCount = 0;
+let org = location.hostname.indexOf("hvr.co.il") != -1 ? "hvr" : "mcc";
+
+window.addEventListener('resize', function (event) {
+    windowResized = true;
+});
+
+$(document).ready(function () {
+
+    btnFilterMarkersHtml = $("#btn-filter-markers").html();
+    btnAllMarkersHtml = $("#btn-all-markers").html();
+
+    lsData = getLocalStorage(LOCAL_STORAGE_DATA_KEY);
+    if (typeof (lsData) !== "undefined" && lsData !== null) {
+        try {
+            let d = JSON.parse(lsData);
+            if ((new Date()).getTime() - d.ts < LOCAL_STORAGE_LIFE_TIME) {
+                data = d.markers;
+                prepData();
+            }
+        }
+        catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    if (data.length === 0) {
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            url: DATA_FILE_PATH.replace("%ORG%", org) /*+ new Date().getTime() + Math.random()*/,
+        }).done(function (response) {
+            //console.log(response);
+            data = JSON.parse(response);
+            setLocalStorage(LOCAL_STORAGE_DATA_KEY, JSON.stringify({ "ts": (new Date()).getTime(), "markers": data }));
+            prepData();
+        }).fail(function (xhr, textStatus, error) {
+            console.log(error);
+        });
+    }
+
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        url: CATEGORY_FILE_PATH,
+    }).done(function (response) {
+        categories = response;
+
+        $.each(categories, function (item, index) {
+            $('#category').append($('<option>', {
+                value: item,
+                text: item
+            }));
+        });
+    }).fail(function (xhr, textStatus, error) {
+        console.log(error);
+    });
+
+    $("#btn-all-markers").click(function () {
+        $("#loading-message").fadeIn(FADE_IN_SPEED);
+        $(".chk-show-markers").prop("checked", true);
+        $("#category").val(DEAFULT_CATEGORY_FILTER);
+        $("#title").val(DEAFULT_TITLE_FILTER);
+        $(this).prop("disabled", true).addClass("disabled").html(BTN_WAIT_MSG);
+        filterChanged = true;
+        showDataList("title");
+        removeAllMarkers();
+        setTimeout(function () {
+            loadMarkers();
+        }, 2 * FADE_IN_SPEED);
+    });
+
+    $("#btn-filter-markers").click(function () {
+        $(this).prop("disabled", true).addClass("disabled").html(BTN_WAIT_MSG);
+        filterChanged = true;
+        setTimeout(function () {
+            loadMarkers();
+        }, 2 * FADE_IN_SPEED);
+    });
+
+    $("#btn-current-location").click(function () {
+        $("#error-location-center").hide();
+        setLocation();
+    });
+
+    $('#location-center').on('keypress', function (e) {
+        if (e.which === 13) {
+            $(this).blur();
+        }
+    });
+
+    $("#location-center").focus(function () {
+        $(this).select();
+        $("#error-location-center").hide();
+    });
+
+    $("#title").focus(function () {
+        $(this).select();
+    });
+
+    $('#title').on('keyup', function () {
+        titleSearched = true;
+        showDataList("title");
+    });
+
+    $('#map-filter-button').click(function () {
+        $('.map-filter-icon').toggleClass('fa-angle-down fa-angle-up');
+    });
+
+});
+
+function prepData() {
+    const titles = [];
+    $.each(data, function (index, item) {
+        if (!titles.includes(item.title)) {
+            titles.push(item.title);
+        }
+    });
+    titles.sort();
+    $.each(titles, function (index, item) {
+        $("#title-list").append($("<option>").attr('value', item));
+    });
+    initMap();
+}async function initMap() {
+
+    // Request needed libraries.
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+
+    const autocomplete = new google.maps.places.Autocomplete(document.getElementById('location-center'), {
+        language: 'iw',
+        componentRestrictions: { country: 'IL' }
+    });
+
+    // The map, centered at default center position
+    map = new google.maps.Map(document.getElementById("map"), {
+        mapId: MAP_ID,
+        zoom: DEFAULT_MAP_ZOOM,
+        minZoom: MIN_MAP_ZOOM,  // Minimum allowed zoom level
+        center: DEFAULT_CENTER,
+        //disableDefaultUI: true,
+        mapTypeControl: false,
+        streetViewControl: false,
+    });
+
+    handleMapLoadStatus();
+    markerCluster = new markerClusterer.MarkerClusterer({ markers, map });
+    setLocation();
+
+    // Add listener for map idle event (when user stops panning/zooming)
+    map.addListener("idle", function () {
+        if (firstMapLoad) {
+            visibleBounds = map.getBounds();    // Define visible area boundaries initially as the entire map
+            firstMapLoad = false;
+            loadMarkers(); // Load and add new markers within the visible area
+        }
+        newBounds = map.getBounds();
+        // Check if the visible area has changed significantly  (can use .intersects instead of equals for less sensitivity)
+        if (!visibleBounds.equals(newBounds)) {
+            visibleBounds = newBounds;  // Update visible area
+            loadMarkers(); // Load and add new markers within the visible area
+        }
+        $("#loading-message").fadeOut();
+        if (showCurrLocationMarker) currLocationMarker();
+    });
+
+    map.addListener("zoom_changed", function () {
+        // zoom_changed event comes before idle event
+        if (!windowResized) $("#loading-message").fadeIn(FADE_IN_SPEED);
+        else windowResized = false;
+    });
+
+    map.addListener("center_changed", function () {
+        // center_changed event comes before idle event
+        if (!windowResized) $("#loading-message").fadeIn(FADE_IN_SPEED);
+        else windowResized = false;
+    });
+
+    map.addListener('click', function (event) {
+        if (event.placeId) {
+            event.stop(); // prevent the default InfoWindow
+        }
+    });
+
+    google.maps.event.addListenerOnce(map, 'tilesloaded', () => {
+        mapTilesLoaded = true;
+    });
+
+    autocomplete.addListener('place_changed', function () {
+        let place = autocomplete.getPlace();
+        if (place.geometry) {
+            map.setCenter(place.geometry.location);
+            showCurrLocationMarker = true;
+            currentPosition = place.geometry.location;
+        }
+        else {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: $("#location-center").val() }, (results, status) => {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    showCurrLocationMarker = true;
+                }
+                else {
+                    $("#error-location-center").show();
+                }
+            });
+        }
+        map.setZoom(DEFAULT_MAP_ZOOM);
+    });
+
+}
+
+function handleMapLoadStatus() {
+    setTimeout(() => {
+        if (!mapTilesLoaded) {
+            if (mapRetryCount < MAP_MAX_RETRIES) {
+                mapRetryCount++;
+                if (map) {
+                    map.unbindAll(); // Remove listeners to prevent memory leaks
+                    firstMapLoad = true;
+                }
+                initMap();
+            }
+            else {
+                const mapDiv = document.getElementById('map');
+                if (mapDiv) {
+                    mapDiv.innerHTML = '<div style="color: red; text-align: center; margin-top: 25px;">לא ניתן לטעון את המפה - נסו שוב מאוחר יותר</div>';
+                    $("#loading-message").hide();
+                }
+            }
+        }
+    }, MAP_RETRY_DELAY);
+}
+
+function setLocation(lat, lng) {
+    if (typeof (lat) !== 'undefined' && typeof (lng) !== 'undefined') {
+        const pos = {
+            lat: lat,
+            lng: lng,
+        };
+        map.setCenter(pos);
+        map.setZoom(DEFAULT_MAP_ZOOM);
+    }
+    else if (navigator.geolocation) {
+        let btnIcon = $("#btn-current-location").html();
+        $("#btn-current-location").prop("disabled", true).addClass("disabled").html('<i class="fas fa-spinner fa-spin text-secondary"></i>');
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+                map.setCenter(pos);
+                map.setZoom(DEFAULT_MAP_ZOOM);
+                currentPosition = pos;
+                $("#location-center").val("מיקומך הנוכחי");
+                $("#btn-current-location").prop("disabled", false).removeClass("disabled").html(btnIcon);
+                currLocationMarker();
+            },
+            (error) => {
+                //console.log(error);
+                $("#no-location-msg").show();
+                $("#btn-current-location").prop("disabled", false).removeClass("disabled").html(btnIcon);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+            }
+        );
+    }
+    else {
+        // Browser doesn't support Geolocation
+        $("#no-location-msg").show();
+    }
+}function currLocationMarker() {
+    if (typeof (currentLocationMarker) !== 'undefined') currentLocationMarker.setMap(null);
+    currentLocationMarker = new google.maps.marker.AdvancedMarkerElement({
+        map: map,
+        position: map.getCenter(),
+        title: "מיקום נבחר",
+        zIndex: 99
+    });
+    showCurrLocationMarker = false;
+}
+
+function loadMarkers() {
+
+    let types = [];
+    let idn;
+    let pinBackgroundColor, pinGlyphColor, pinBorderColor, zIndex;
+    let bounds = map.getBounds();
+    let category = $("#category").val();
+    let title = fixInput($("#title").val());
+
+    if ($('#chk-show-food-markers').is(':checked')) {
+        types.push('F0');
+        types.push('F1');
+    }
+    if ($('#chk-show-gift-markers').is(':checked')) {
+        types.push('G');
+        types.push('G0');
+        types.push('G1');
+    }
+    if ($('#chk-show-card-markers').is(':checked')) {
+        types.push('C0');
+        types.push('C1');
+    }
+    if ($('#chk-show-site-markers').is(':checked')) {
+        types.push('S');
+    }
+
+    let dataFiltered = $.grep(data, function (obj) {
+        return (
+            (types.includes(obj.type)) &&
+            (category != DEAFULT_CATEGORY_FILTER ? findArrayInArray(categories[category], obj.category.split(",")) : category === category) &&
+            (title != DEAFULT_TITLE_FILTER ? obj.title.toLowerCase().indexOf(title.toLowerCase()) !== -1 : title === title)
+        );
+    });
+
+    for (let i = markers.length - 1; i >= 0; i--) {
+        idn = parseInt(markers[i].content.getAttribute("idn"));
+        if (dataFiltered.findIndex(x => x.idn === idn) === -1 || !bounds.contains(markers[i].position)) {
+            markerIdns.splice(markerIdns.indexOf(idn), 1);
+            markers[i].setMap(null); // Remove marker from map
+            markers.splice(i, 1); // Remove marker from array
+        }
+    }
+
+    let markersToLoad = dataFiltered.filter(marker => !markerIdns.includes(marker.idn)).filter(marker => bounds.contains({ lat: marker.latitude, lng: marker.longitude }));
+
+    for (let i = 0; i < markersToLoad.length; i++) {
+        if (markersToLoad[i].type == "F0" || markersToLoad[i].type == "F1") {
+            markersToLoad[i].hesder = '"חבר" טעמים';
+            pinGlyphColor = '#fcb53b';
+            pinBackgroundColor = '#003a6a';
+            pinBorderColor = "#ffffff";
+            zIndex = 500;
+        }
+        else if (markersToLoad[i].type == "G" || markersToLoad[i].type == "G0" || markersToLoad[i].type == "G1") {
+            markersToLoad[i].hesder = (org == "hvr" ? '"חבר" של קבע' : '"חבר" שלי' + (markersToLoad[i].type == "G" ? " - רשתות" : " - מסעדות")) + (markersToLoad[i].discount.length > 0 ? " | " + markersToLoad[i].discount + " הנחה במעמד החיוב" : "");
+            pinGlyphColor = (org == "hvr" ? '#003a6a' : '#ffffff');
+            pinBackgroundColor = (org == "hvr" ? '#fcb53b' : '#58b947');
+            pinBorderColor = (org == "hvr" ? '#ffffff' : '#ffffff');
+            zIndex = 400;
+        }
+        else if (markersToLoad[i].type == "C0" || markersToLoad[i].type == "C1") {
+            markersToLoad[i].hesder = markersToLoad[i].discount + ($.isNumeric(markersToLoad[i].discount.replace("%", "")) ? " הנחה במעמד החיוב" : "") + (markersToLoad[i].type == "C1" ? ' | ' + (org == "hvr" ? '"חבר" של קבע' : '"חבר" שלי') : '');
+            pinGlyphColor = '#ffffff';
+            pinBackgroundColor = '#050006';
+            pinBorderColor = "#ffffff";
+            zIndex = 300;
+        }
+        else if (markersToLoad[i].type == "S") {
+            markersToLoad[i].hesder = "תרבות ופנאי";
+            pinGlyphColor = '#ffffff';
+            pinBackgroundColor = '#d40e8c';
+            pinBorderColor = "#d40e8c";
+            zIndex = 200;
+        }
+
+        latLng = new google.maps.LatLng();
+        latLng.lat = markersToLoad[i].latitude;
+        latLng.lng = markersToLoad[i].longitude;
+
+        // Change the background color
+        const pinElement = new google.maps.marker.PinElement({
+            background: pinBackgroundColor,
+            borderColor: pinBorderColor,
+            glyphColor: pinGlyphColor,
+        });
+        pinElement.element.setAttribute('idn', markersToLoad[i].idn);
+
+        const marker = new google.maps.marker.AdvancedMarkerElement({
+            position: latLng,
+            map: map,
+            title: markersToLoad[i].title,
+            content: pinElement.element,
+            zIndex: zIndex
+        });
+
+        const infowindow = new google.maps.InfoWindow({
+            content: infoWindowTmpl
+                .replace('{{ title }}', markersToLoad[i].title)
+                .replace('{{ category }}', replaceAll(',', ' | ', markersToLoad[i].category) + (markersToLoad[i].type == "F1" || markersToLoad[i].type == "G1" ? " | כשר" : ""))
+                .replace('{{ city }}', markersToLoad[i].city)
+                .replace('{{ address }}', markersToLoad[i].address)
+                .replace('{{ website }}', markersToLoad[i].website != '' ? '<a href="https://' + markersToLoad[i].website + '" target="_blank">אתר בית העסק</a>' : '')
+                .replace('{{ hesder }}', markersToLoad[i].hesder)
+                .replace('{{ destLat }}', markersToLoad[i].latitude).replace('{{ destLat }}', markersToLoad[i].latitude)
+                .replace('{{ destLng }}', markersToLoad[i].longitude).replace('{{ destLng }}', markersToLoad[i].longitude)
+                .replace('{{ origLat }}', typeof currentPosition !== 'undefined' ? currentPosition.lat : markersToLoad[i].latitude)
+                .replace('{{ origLng }}', typeof currentPosition !== 'undefined' ? currentPosition.lng : markersToLoad[i].longitude),
+            ariaLabel: markersToLoad[i].title,
+        });
+
+        marker.addListener("gmp-click", () => {
+            if (openedInfoWindow) openedInfoWindow.close();
+            openedInfoWindow = infowindow;
+            infowindow.open({
+                anchor: marker,
+                map,
+            });
+        });
+
+        markers.push(marker);
+        markerIdns.push(markersToLoad[i].idn);
+
+    }
+
+    $(".no-markers-alert").hide();
+    markerCluster.clearMarkers();  // Clear existing clusters
+
+    if (titleSearched && dataFiltered.length === 1) {
+        titleSearched = false;
+        setLocation(dataFiltered[0].latitude, dataFiltered[0].longitude);
+        $("#location-center").val("");
+    }
+    else if (dataFiltered.length === 0) {
+        $("#no-markers-global-msg").fadeIn(FADE_IN_SPEED);
+    }
+    else if (dataFiltered.length > 0 && markers.length === 0) {
+        $("#no-markers-local-msg").fadeIn(FADE_IN_SPEED);
+    }
+    else {
+        if (map.getZoom() < DEFAULT_MAP_ZOOM && markers.length > MIN_CLUSTER_LIMIT) {
+            // Re-cluster markers
+            try {
+                markerCluster.addMarkers(markers); // Add markers for clustering
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+        else {
+            // Show markers individually (remove from cluster)
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map); // Show markers on map
+            }
+        }
+    }
+
+    if (filterChanged) {
+        $("#btn-filter-markers").prop("disabled", false).removeClass("disabled").html(btnFilterMarkersHtml);
+        $("#btn-all-markers").prop("disabled", false).removeClass("disabled").html(btnAllMarkersHtml);
+        filterChanged = false;
+    }
+
+    map.setZoom(map.getZoom());
+
+}function removeAllMarkers() {
+    for (const marker of markers) {
+        marker.setMap(null); // Set the map property to null to remove the marker
+    }
+    markers.length = 0; // Clear the markers array (optional)
+    markerIdns.length = 0; // Clear the markers array (optional)
+    markerCluster.clearMarkers(); // Clear existing clusters
+}
+
+function showDataList(id) {
+    let input = document.getElementById(id);
+    if (input.value.length === 0) {
+        // Hide the datalist dropdown
+        input.setAttribute("list", ""); // Detach the datalist
+    }
+    else if (input.value.length > 0 && input.getAttribute("list") == "") {
+        // Show the datalist dropdown
+        input.setAttribute("list", id + "-list"); // Attach the datalist
+    }
+}
+
+function replaceAll(find, replace, str) {
+    while (str.indexOf(find) > -1) {
+        str = str.replace(find, replace);
+    }
+    return str;
+}
+
+function fixInput(str) {
+    return str.replace(/\״/g, '"')
+        .replace(/\“/g, '"')
+        .replace(/\”/g, '"')
+        .replace(/\׳/g, "'")
+        .replace(/\‘/g, "'")
+        .replace(/\’/g, "'");
+}
+
+function findArrayInArray(arr1, arr2) {
+    let result = false;
+    for (const [index1, item1] of arr1.entries()) {
+        for (const [index2, item2] of arr2.entries()) {
+            if (item1 === item2) {
+                result = true;
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+function getLocalStorage(key) {
+    if (typeof (Storage) !== "undefined") return localStorage.getItem(key);
+}
+
+function setLocalStorage(key, val) {
+    if (typeof (Storage) !== "undefined") localStorage.setItem(key, val);
+}
+
+function resetLocalStorage(key) {
+    if (typeof (Storage) !== "undefined") localStorage.removeItem(key);
+}
+</script>
+
+<div id="myModal" class="modal m-auto" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title">שים לב</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light bg-secondary text-white border-secondary btn-cancel" data-dismiss="modal">סגור</button>
+        &nbsp;
+        <button type="button" class="btn btn-primary btn-confirm" style="display:none;">מאשר</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
