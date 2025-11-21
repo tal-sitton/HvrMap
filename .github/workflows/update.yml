@@ -56,7 +56,7 @@ jobs:
 
       - name: add maps_hvr_files
         run:
-          git add maps_hvr_files/*
+          git add *
 
       - name: commit file and push
         run: |
