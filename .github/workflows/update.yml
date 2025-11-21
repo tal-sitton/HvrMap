@@ -60,5 +60,5 @@ jobs:
 
       - name: commit file and push
         run: |
-          git commit -m "Update movies.json"
+          git commit -m "Update businesses"
           git push
