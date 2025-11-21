@@ -12,7 +12,7 @@ permissions: write-all
 
 jobs:
   run:
-    runs-on: alpine-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -27,8 +27,24 @@ jobs:
           fetch-depth: 0
 
       - name: Install dependencies
-        run: apk add curl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
 
       - name: run update
         run:
           ./update.sh
+
+      - name: config git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: add maps_hvr_files
+        run:
+          git add maps_hvr_files/*
+
+      - name: commit file and push
+        run: |
+          git commit -m "Update movies.json"
+          git push
