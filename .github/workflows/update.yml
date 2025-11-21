@@ -32,8 +32,9 @@ jobs:
           sudo apt-get install -y curl
 
       - name: run update
-        run:
-          ./update.sh
+        run: |
+            chmod +x ./update.sh
+            ./update.sh
 
       - name: config git
         run: |
